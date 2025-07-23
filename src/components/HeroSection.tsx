@@ -1,45 +1,38 @@
-import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Youtube, Facebook, Instagram, Download, MessageCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Button } from "@/components/ui/button";
+import {
+  Github,
+  Linkedin,
+  Youtube,
+  Facebook,
+  Instagram,
+  Download,
+  MessageCircle,
+  Code2,
+  Terminal,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  HERO_PROFILE_IMAGE,
+  HERO_SOCIAL_LINKS,
+  HERO_RESUME_PATH,
+  HERO_NAME,
+  HERO_TITLE,
+  HERO_GREETING,
+} from "@/constants/hero";
 
 const HeroSection = () => {
-  const socialLinks = [
-    { 
-      icon: Linkedin, 
-      url: 'https://www.linkedin.com/in/abdullahfalak007', 
-      label: 'LinkedIn' 
-    },
-    { 
-      icon: Github, 
-      url: 'https://github.com/Abdullahfalak007', 
-      label: 'GitHub' 
-    },
-    { 
-      icon: Youtube, 
-      url: 'https://www.youtube.com/c/FalakTechrary', 
-      label: 'YouTube' 
-    },
-    { 
-      icon: Facebook, 
-      url: 'https://www.facebook.com/abdullahfalak007', 
-      label: 'Facebook' 
-    },
-    { 
-      icon: Instagram, 
-      url: 'https://www.instagram.com/Abdullahfalak007/', 
-      label: 'Instagram' 
-    },
-  ];
-
   const scrollToContact = () => {
-    const element = document.querySelector('#contact');
+    const element = document.querySelector("#contact");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="profile" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section
+      id="profile"
+      className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
@@ -50,114 +43,125 @@ const HeroSection = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Profile Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-center lg:justify-end order-1 lg:order-1"
           >
             <div className="relative group">
-              <motion.div 
+              <motion.div
                 className="w-80 h-80 rounded-full overflow-hidden shadow-glow border-4 border-primary/20 relative"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src="/placeholder.svg"
+                  src={HERO_PROFILE_IMAGE}
                   alt="Muhammad Abdullah profile picture"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-hero opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </motion.div>
-              
+
               {/* Floating Elements */}
               <motion.div
-                animate={{ 
+                animate={{
                   y: [0, -10, 0],
-                  rotate: [0, 5, 0]
+                  rotate: [0, 5, 0],
                 }}
-                transition={{ 
+                transition={{
                   duration: 3,
                   repeat: Infinity,
-                  ease: 'easeInOut'
+                  ease: "easeInOut",
                 }}
                 className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow"
               >
-                <span className="text-primary-foreground font-bold text-sm">💻</span>
+                <Code2 className="w-10 h-10 text-primary-foreground" />
               </motion.div>
-              
+
               <motion.div
-                animate={{ 
+                animate={{
                   y: [0, 10, 0],
-                  rotate: [0, -5, 0]
+                  rotate: [0, -5, 0],
                 }}
-                transition={{ 
+                transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: 1
+                  ease: "easeInOut",
+                  delay: 1,
                 }}
                 className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center shadow-elegant"
               >
-                <span className="text-hero-foreground font-bold text-sm">🚀</span>
+                <Terminal className="w-8 h-8 text-hero-foreground" />
               </motion.div>
             </div>
           </motion.div>
 
           {/* Profile Text */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center lg:text-left order-2 lg:order-2"
           >
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-muted-foreground text-lg mb-2"
             >
-              Hello, I'm
+              {HERO_GREETING}
             </motion.p>
-            
-            <motion.h1 
+
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-hero bg-clip-text text-transparent"
             >
-              Muhammad Abdullah
+              {HERO_NAME}
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-xl sm:text-2xl text-muted-foreground mb-8"
             >
-              Full Stack Developer | Associate Software Engineer
+              {HERO_TITLE}
             </motion.p>
 
             {/* Action Buttons */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   variant="download"
                   size="xl"
-                  onClick={() => window.open('./assets/Muhammad-Abdullah-Resume-2025.pdf')}
+                  asChild // Use asChild to wrap the Button in an anchor tag
                   className="group"
                 >
-                  <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-                  Download CV
+                  <a
+                    href="/assets/Muhammad-Abdullah-Resume-2025.pdf" // Update the link to the actual path of your resume
+                    download="Muhammad-Abdullah-Resume-2025.pdf" // This will trigger the download with the specified filename
+                  >
+                    <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                    Download CV
+                  </a>
                 </Button>
               </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   variant="hero"
                   size="xl"
@@ -171,32 +175,32 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Social Links */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               className="flex justify-center lg:justify-start gap-4"
             >
-              {socialLinks.map((social, index) => {
+              {HERO_SOCIAL_LINKS.map((social, index) => {
                 const Icon = social.icon;
                 return (
                   <motion.button
                     key={index}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ 
-                      duration: 0.4, 
+                    transition={{
+                      duration: 0.4,
                       delay: 1.4 + index * 0.1,
-                      type: 'spring',
-                      stiffness: 200
+                      type: "spring",
+                      stiffness: 200,
                     }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.2,
                       rotate: 10,
-                      transition: { duration: 0.2 }
+                      transition: { duration: 0.2 },
                     }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => window.open(social.url, '_blank')}
+                    onClick={() => window.open(social.url, "_blank")}
                     className="w-12 h-12 rounded-full bg-gradient-card border border-border flex items-center justify-center hover:shadow-glow transition-all duration-300 group relative overflow-hidden"
                     aria-label={social.label}
                   >
