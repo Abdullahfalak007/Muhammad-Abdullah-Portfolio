@@ -42,13 +42,11 @@ const ContactSection = () => {
 
     setSending(true);
     try {
-      console.log("Sending via EmailJS", { serviceID, templateID });
       const result = await emailjs.sendForm(
         serviceID,
         templateID,
         formRef.current
       );
-      console.log("EmailJS success", result);
       toast({
         title: "Message sent!",
         description: "Thanks—I'll be in touch soon.",
