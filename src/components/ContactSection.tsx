@@ -3,8 +3,69 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY!);
+  }, []);
+
+  // Compute a human‑readable timestamp at mount
+  const [currentDate] = useState(() => new Date().toLocaleString());
+
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY!);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
+
+    // guard missing env
+    if (!serviceID || !templateID) {
+      console.error("EmailJS env vars missing");
+      toast({
+        title: "Configuration error",
+        description: "Please check EmailJS keys.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setSending(true);
+    try {
+      console.log("Sending via EmailJS", { serviceID, templateID });
+      const result = await emailjs.sendForm(
+        serviceID,
+        templateID,
+        formRef.current
+      );
+      console.log("EmailJS success", result);
+      toast({
+        title: "Message sent!",
+        description: "Thanks—I'll be in touch soon.",
+      });
+      formRef.current.reset();
+    } catch (err) {
+      console.error("EmailJS failed", err);
+      toast({
+        title: "Send failed",
+        description: "Try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: Mail,
@@ -149,14 +210,29 @@ const ContactSection = () => {
                   Send Message
                 </h3>
 
-                <form className="space-y-6">
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                >
+                  {/* hidden field to tell your EmailJS template who the reply goes to */}
+                  <input
+                    type="hidden"
+                    name="reply_to"
+                    value="abdullahfalak007@gmail.com"
+                  />
+                  {/* hidden field to tell your EmailJS template the current date */}
+                  <input type="hidden" name="date" value={currentDate} />
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-foreground mb-2">
                         First Name
                       </label>
                       <input
+                        name="from_name"
                         type="text"
+                        required
                         className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                         placeholder="Your first name"
                       />
@@ -166,7 +242,9 @@ const ContactSection = () => {
                         Last Name
                       </label>
                       <input
+                        name="last_name"
                         type="text"
+                        required
                         className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                         placeholder="Your last name"
                       />
@@ -175,12 +253,14 @@ const ContactSection = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Email
+                      Your Email
                     </label>
                     <input
+                      name="user_email"
                       type="email"
+                      required
                       className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
-                      placeholder="your.email@example.com"
+                      placeholder="you@example.com"
                     />
                   </div>
 
@@ -189,9 +269,11 @@ const ContactSection = () => {
                       Message
                     </label>
                     <textarea
+                      name="message"
                       rows={5}
+                      required
                       className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none"
-                      placeholder="Your message here..."
+                      placeholder="Your message here…"
                     ></textarea>
                   </div>
 
@@ -204,9 +286,10 @@ const ContactSection = () => {
                       variant="default"
                       size="lg"
                       className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                      disabled={sending}
                     >
                       <Send className="w-5 h-5 mr-2" />
-                      Send Message
+                      {sending ? "Sending…" : "Send Message"}
                     </Button>
                   </motion.div>
                 </form>
