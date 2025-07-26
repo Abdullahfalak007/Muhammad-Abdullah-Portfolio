@@ -1,18 +1,3 @@
-// Static data for the ProjectsSection
-
-// 24/07/2025  01:33 am    <DIR>          .
-// 24/07/2025  01:33 am    <DIR>          ..
-// 26/02/2025  05:08 pm           253,915 about-pic.png
-// 26/02/2025  05:08 pm         1,485,609 Bright Scholars School (Webpage).png
-// 26/02/2025  05:08 pm           641,471 DealFinity - Ecommerce Store.png
-// 24/07/2025  01:08 am             7,645 favicon.ico
-// 26/02/2025  05:08 pm            70,611 Gmail Automation.jpg
-// 26/02/2025  05:08 pm            63,543 Lead tracker (Extension).jpg
-// 24/07/2025  01:26 am           140,662 placeholder.png
-// 14/06/2025  11:22 am         1,510,981 recipe-finder.png
-// 24/07/2025  01:08 am               174 robots.txt
-// 14/06/2025  11:32 am         1,175,406 TeChat.png
-
 export const PROJECTS = [
   {
     title: "TeChat - Chatting (Android App)",
