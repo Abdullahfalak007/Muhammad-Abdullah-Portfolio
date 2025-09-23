@@ -33,9 +33,19 @@ const ProjectsSection = () => {
 
               <CardContent className="p-6">
                 {/* Project Title */}
-                <h3 className="font-semibold text-lg mb-4 leading-tight group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-semibold text-lg mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
+
+                {/* Project Duration */}
+                <p className="text-sm text-muted-foreground mb-2">
+                  {project.duration}
+                </p>
+
+                {/* Project Description */}
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  {project.description}
+                </p>
 
                 {/* Action Buttons */}
                 <div className="flex gap-3">

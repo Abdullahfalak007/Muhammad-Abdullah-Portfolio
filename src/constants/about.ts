@@ -49,7 +49,8 @@ export const ABOUT_CARDS = [
     title: "Education",
     details: [
       { label: "Bachelor of Computer Science", value: "(BSCS)" },
-      { label: "Riphah International University", value: "" },
+      { label: "Riphah International University", value: "2019-2023" },
+      { label: "CGPA", value: "3.60" },
     ],
   },
 ];

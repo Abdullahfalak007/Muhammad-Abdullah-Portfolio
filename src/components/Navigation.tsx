@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,22 +13,23 @@ const Navigation = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    { href: "#certifications", label: "Certifications" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
@@ -36,26 +37,26 @@ const Navigation = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-background/95 backdrop-blur-lg border-b border-border shadow-elegant' 
-            : 'bg-background/80 backdrop-blur-md border-b border-border/50'
+          scrolled
+            ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-elegant"
+            : "bg-background/80 backdrop-blur-md border-b border-border/50"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <motion.div 
+            <motion.div
               className="font-bold text-xl bg-gradient-hero bg-clip-text text-transparent"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
               Muhammad Abdullah
             </motion.div>
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <div className="flex space-x-8">
@@ -69,10 +70,10 @@ const Navigation = () => {
                     className="text-foreground hover:text-primary transition-colors duration-200 relative group"
                   >
                     {link.label}
-                    <motion.span 
+                    <motion.span
                       className="absolute -bottom-1 left-0 h-0.5 bg-primary"
                       initial={{ width: 0 }}
-                      whileHover={{ width: '100%' }}
+                      whileHover={{ width: "100%" }}
                       transition={{ duration: 0.3 }}
                     />
                   </motion.button>
@@ -91,7 +92,7 @@ const Navigation = () => {
               >
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={isMenuOpen ? 'close' : 'menu'}
+                    key={isMenuOpen ? "close" : "menu"}
                     initial={{ rotate: 0, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 180, opacity: 0 }}
@@ -108,11 +109,11 @@ const Navigation = () => {
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
