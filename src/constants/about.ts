@@ -1,7 +1,7 @@
 // Static data for the AboutSection
 import { Briefcase, GraduationCap, Code2, Brain } from "lucide-react";
 
-export const ABOUT_PROFILE_IMAGE = "/about-pic.png";
+export const ABOUT_PROFILE_IMAGE = "/about-pic.jpg";
 
 export const ABOUT_FLOATING_STATS = [
   {
