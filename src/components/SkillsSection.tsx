@@ -1,34 +1,45 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Code, Database } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { AnimatedSection, StaggerContainer } from '@/components/AnimatedSection';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle, Code, Database, Server } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  AnimatedSection,
+  StaggerContainer,
+} from "@/components/AnimatedSection";
 
 const SkillsSection = () => {
   const frontendSkills = [
-    { name: 'HTML5', level: 'Experienced' },
-    { name: 'CSS3', level: 'Experienced' },
-    { name: 'JavaScript (ES6+)', level: 'Experienced' },
-    { name: 'React.js', level: 'Experienced' },
-    { name: 'Next.js', level: 'Experienced' },
-    { name: 'TypeScript', level: 'Experienced' },
-    { name: 'Bootstrap', level: 'Intermediate' },
-    { name: 'Tailwind CSS', level: 'Intermediate' },
+    { name: "HTML5", level: "Experienced" },
+    { name: "CSS3", level: "Experienced" },
+    { name: "JavaScript (ES6+)", level: "Experienced" },
+    { name: "React.js", level: "Experienced" },
+    { name: "Next.js", level: "Experienced" },
+    { name: "TypeScript", level: "Experienced" },
+    { name: "Bootstrap", level: "Intermediate" },
+    { name: "Tailwind CSS", level: "Intermediate" },
   ];
 
   const backendSkills = [
-    { name: 'Node.js', level: 'Experienced' },
-    { name: 'Express.js', level: 'Experienced' },
-    { name: 'MongoDB', level: 'Experienced' },
-    { name: 'Firebase', level: 'Experienced' },
-    { name: 'Python', level: 'Intermediate' },
-    { name: 'FastAPI', level: 'Intermediate' },
-    { name: 'REST API', level: 'Experienced' },
-    { name: 'Git', level: 'Experienced' },
+    { name: "Node.js", level: "Experienced" },
+    { name: "Express.js", level: "Experienced" },
+    { name: "Python", level: "Intermediate" },
+    { name: "FastAPI", level: "Intermediate" },
+    { name: "REST API", level: "Experienced" },
+    { name: "Git", level: "Experienced" },
   ];
 
-  const SkillCard = ({ title, skills, icon: Icon }: { 
-    title: string; 
+  const databaseSkills = [
+    { name: "MongoDB", level: "Experienced" },
+    { name: "PostgreSQL", level: "Experienced" },
+    { name: "Firebase", level: "Experienced" },
+  ];
+
+  const SkillCard = ({
+    title,
+    skills,
+    icon: Icon,
+  }: {
+    title: string;
     skills: { name: string; level: string }[];
     icon: any;
   }) => (
@@ -38,11 +49,11 @@ const SkillsSection = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <Card className="group hover:shadow-glow transition-all duration-500 bg-gradient-card border-0 relative overflow-hidden">
+      <Card className="group hover:shadow-glow transition-all duration-500 bg-gradient-card border-0 relative overflow-hidden h-full">
         <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
         <CardHeader className="pb-4 relative z-10">
           <div className="flex items-center justify-center gap-3 mb-2">
-            <motion.div 
+            <motion.div
               className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300"
               whileHover={{ scale: 1.1, rotate: 10 }}
             >
@@ -56,7 +67,7 @@ const SkillsSection = () => {
         <CardContent className="relative z-10">
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {skills.map((skill, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -68,15 +79,23 @@ const SkillsSection = () => {
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  transition={{ delay: index * 0.1 + 0.2, type: "spring", stiffness: 200 }}
+                  transition={{
+                    delay: index * 0.1 + 0.2,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
                   viewport={{ once: true }}
                 >
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 group-hover/skill:animate-pulse" />
                 </motion.div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-foreground truncate group-hover/skill:text-primary transition-colors duration-200">{skill.name}</h4>
-                  <Badge 
-                    variant={skill.level === 'Experienced' ? 'default' : 'secondary'}
+                  <h4 className="font-medium text-foreground truncate group-hover/skill:text-primary transition-colors duration-200">
+                    {skill.name}
+                  </h4>
+                  <Badge
+                    variant={
+                      skill.level === "Experienced" ? "default" : "secondary"
+                    }
                     className="text-xs mt-1 group-hover/skill:scale-105 transition-transform duration-200"
                   >
                     {skill.level}
@@ -91,7 +110,10 @@ const SkillsSection = () => {
   );
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20 relative overflow-hidden">
+    <section
+      id="skills"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20 relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-primary/3 rounded-full blur-3xl animate-pulse"></div>
@@ -106,9 +128,26 @@ const SkillsSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <SkillCard title="Frontend Development" skills={frontendSkills} icon={Code} />
-          <SkillCard title="Backend Development" skills={backendSkills} icon={Database} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <SkillCard
+            title="Frontend Development"
+            skills={frontendSkills}
+            icon={Code}
+          />
+          <SkillCard
+            title="Backend Development"
+            skills={backendSkills}
+            icon={Server}
+          />
+          <div className="md:col-span-2 flex justify-center">
+            <div className="w-full md:max-w-md">
+              <SkillCard
+                title="Databases"
+                skills={databaseSkills}
+                icon={Database}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
