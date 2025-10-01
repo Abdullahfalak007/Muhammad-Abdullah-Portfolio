@@ -109,14 +109,14 @@ const AboutSection = () => {
           {/* About Content */}
           <AnimatedSection direction="right" className="space-y-8">
             {/* Experience and Education Cards */}
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="group hover:shadow-glow transition-all duration-500 bg-gradient-card border-0 relative overflow-hidden">
+                <Card className="group hover:shadow-glow transition-all duration-500 bg-gradient-card border-0 relative overflow-hidden h-full">
                   <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
                   <CardContent className="p-6 text-center relative z-10">
                     <motion.div
@@ -148,7 +148,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <Card className="group hover:shadow-glow transition-all duration-500 bg-gradient-card border-0 relative overflow-hidden">
+                <Card className="group hover:shadow-glow transition-all duration-500 bg-gradient-card border-0 relative overflow-hidden h-full">
                   <div className="absolute inset-0 bg-gradient-hero opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
                   <CardContent className="p-6 text-center relative z-10">
                     <motion.div
