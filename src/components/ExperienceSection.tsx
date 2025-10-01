@@ -29,7 +29,7 @@ const ExperienceSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card 
+                <Card
                   className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0 relative overflow-hidden h-full cursor-pointer"
                   onClick={() => window.open(exp.website, "_blank")}
                 >

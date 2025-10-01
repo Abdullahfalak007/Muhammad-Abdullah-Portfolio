@@ -35,7 +35,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-muted-foreground">
-            Copyright © 2025 Muhammad Abdullah. All Rights Reserved.
+            Copyright © {new Date().getFullYear()} Muhammad Abdullah. All Rights Reserved.
           </p>
         </div>
       </div>
