@@ -23,7 +23,7 @@ const CertificationsSection = () => {
           <h3 className="text-2xl font-semibold text-center mb-12 text-foreground">
             Professional Certifications
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
             {CERTIFICATES.map((cert, index) => (
               <motion.div
                 key={index}
@@ -32,7 +32,7 @@ const CertificationsSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0">
+                <Card className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0 h-full">
                   <CardHeader className="pb-4">
                     <div className="space-y-2">
                       <h4 className="font-semibold text-lg leading-tight group-hover:text-primary transition-colors duration-300">

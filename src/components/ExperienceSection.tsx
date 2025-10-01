@@ -20,7 +20,7 @@ const ExperienceSection = () => {
           <h3 className="text-2xl font-semibold text-center mb-12 text-foreground">
             Professional Experience
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {EXPERIENCES.map((exp, index) => (
               <motion.div
                 key={index}
@@ -29,7 +29,7 @@ const ExperienceSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0 relative overflow-hidden">
+                <Card className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0 relative overflow-hidden h-full">
                   {exp.current && (
                     <div className="absolute top-4 right-4">
                       <Badge className="bg-primary text-primary-foreground">
