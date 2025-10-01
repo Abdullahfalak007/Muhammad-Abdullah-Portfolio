@@ -20,7 +20,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0 overflow-hidden"
+              className="group hover:shadow-elegant transition-all duration-300 bg-gradient-card border-0 overflow-hidden flex flex-col h-full"
             >
               {/* Project Image */}
               <div className="aspect-square w-full h-64 overflow-hidden bg-muted flex items-center justify-center">
@@ -31,7 +31,7 @@ const ProjectsSection = () => {
                 />
               </div>
 
-              <CardContent className="p-6">
+              <CardContent className="p-6 flex-1 flex flex-col">
                 {/* Project Title */}
                 <h3 className="font-semibold text-lg mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
                   {project.title}
@@ -43,12 +43,12 @@ const ProjectsSection = () => {
                 </p>
 
                 {/* Project Description */}
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
                   {project.description}
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
+                <div className="flex gap-3 mt-auto">
                   <Button
                     variant="outline"
                     size="sm"
