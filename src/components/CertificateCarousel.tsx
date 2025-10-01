@@ -27,108 +27,102 @@ const CertificateCarousel = ({ certificates }: CertificateCarouselProps) => {
   const goToSlide = (index: number) => setCurrentIndex(index);
 
   return (
-    <section id="certificates" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <h3 className="text-2xl font-semibold text-center mb-8 text-foreground">
-          Certificate Gallery
-        </h3>
-
-        <Card className="w-full overflow-hidden bg-gradient-card border-0 shadow-elegant">
-          {/* Image Container */}
-          <div className="w-full h-80 md:h-[500px] relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 300 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -300 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
-                <div className="h-full flex items-center justify-center">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="relative group w-full h-full">
-                        <img
-                          src={certificates[currentIndex].image}
-                          alt={certificates[currentIndex].title}
-                          className="w-full h-full object-fill rounded-lg shadow-card transition-transform duration-300 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
-                          <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-sm">
-                      <div className="p-4">
-                        <img
-                          src={certificates[currentIndex].image}
-                          alt={certificates[currentIndex].title}
-                          className="w-full h-auto object-contain rounded-lg"
-                        />
-                        <div className="mt-4 text-center">
-                          <h4 className="text-lg font-semibold text-foreground">
-                            {certificates[currentIndex].title}
-                          </h4>
-                          <p className="text-muted-foreground mt-2">
-                            {certificates[currentIndex].description}
-                          </p>
-                        </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation Buttons */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={prevSlide}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-background/80 hover:bg-background/90 backdrop-blur-sm"
-              disabled={certificates.length <= 1}
+    <div className="w-full">
+      <Card className="w-full overflow-hidden bg-gradient-card border-0 shadow-elegant">
+        {/* Image Container */}
+        <div className="w-full h-80 md:h-[500px] relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 300 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -300 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute inset-0"
             >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={nextSlide}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-background/80 hover:bg-background/90 backdrop-blur-sm"
-              disabled={certificates.length <= 1}
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
-          </div>
+              <div className="h-full flex items-center justify-center">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="relative group w-full h-full">
+                      <img
+                        src={certificates[currentIndex].image}
+                        alt={certificates[currentIndex].title}
+                        className="w-full h-full object-fill rounded-lg shadow-card transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
+                        <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-sm">
+                    <div className="p-4">
+                      <img
+                        src={certificates[currentIndex].image}
+                        alt={certificates[currentIndex].title}
+                        className="w-full h-auto object-contain rounded-lg"
+                      />
+                      <div className="mt-4 text-center">
+                        <h4 className="text-lg font-semibold text-foreground">
+                          {certificates[currentIndex].title}
+                        </h4>
+                        <p className="text-muted-foreground mt-2">
+                          {certificates[currentIndex].description}
+                        </p>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Static Title & Description Below */}
-          <div className="mt-6 px-6 text-center">
-            <h4 className="text-lg font-semibold text-foreground mb-2">
-              {certificates[currentIndex].title}
-            </h4>
-            <p className="text-sm text-muted-foreground">
-              {certificates[currentIndex].description}
-            </p>
-          </div>
+          {/* Navigation Buttons */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-background/80 hover:bg-background/90 backdrop-blur-sm"
+            disabled={certificates.length <= 1}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-background/80 hover:bg-background/90 backdrop-blur-sm"
+            disabled={certificates.length <= 1}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
+        </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center space-x-2 p-4">
-            {certificates.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goToSlide(idx)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  idx === currentIndex
-                    ? "bg-primary scale-110"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                }`}
-              />
-            ))}
-          </div>
-        </Card>
-      </div>
-    </section>
+        {/* Static Title & Description Below */}
+        <div className="mt-6 px-6 text-center">
+          <h4 className="text-lg font-semibold text-foreground mb-2">
+            {certificates[currentIndex].title}
+          </h4>
+          <p className="text-sm text-muted-foreground">
+            {certificates[currentIndex].description}
+          </p>
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="flex justify-center space-x-2 p-4">
+          {certificates.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goToSlide(idx)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                idx === currentIndex
+                  ? "bg-primary scale-110"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              }`}
+            />
+          ))}
+        </div>
+      </Card>
+    </div>
   );
 };
 
