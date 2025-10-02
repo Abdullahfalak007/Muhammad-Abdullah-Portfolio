@@ -25,7 +25,7 @@ export const EXPERIENCES = [
   {
     title: "Junior Developer",
     company: "Cybergen, Faisalabad",
-    duration: "June 2024 - Sep 2025",
+    duration: "June 2024 - Sep 2024",
     description:
       "Developed AI-integrated software for a US-based company, focusing on scalable front-end and back-end solutions. Built and consumed RESTful APIs for data-driven dashboards and dynamic web pages.",
     current: false,
