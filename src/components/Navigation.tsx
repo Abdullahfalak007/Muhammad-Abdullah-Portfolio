@@ -27,11 +27,18 @@ const Navigation = () => {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
     setIsMenuOpen(false);
+
+    // Small delay to allow menu animation to complete
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -114,7 +121,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border"
+              className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border relative z-50"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navLinks.map((link, index) => (
@@ -123,8 +130,11 @@ const Navigation = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    onClick={() => scrollToSection(link.href)}
-                    className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }}
+                    className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200 cursor-pointer touch-manipulation active:bg-accent/50"
                   >
                     {link.label}
                   </motion.button>
