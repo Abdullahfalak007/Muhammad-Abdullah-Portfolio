@@ -29,28 +29,9 @@ const Navigation = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      // Calculate the position accounting for fixed navigation
-      const navHeight = 64; // Navigation height
-      const elementRect = element.getBoundingClientRect();
-      const absoluteElementTop = elementRect.top + window.pageYOffset;
-      const offsetPosition = absoluteElementTop - navHeight;
-
-      // Use requestAnimationFrame for better mobile compatibility
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-
-        // Close menu after scrolling starts
-        setTimeout(() => {
-          setIsMenuOpen(false);
-        }, 100);
-      });
-    } else {
-      // Close menu even if element not found
-      setIsMenuOpen(false);
+      element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -143,10 +124,6 @@ const Navigation = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     onClick={() => scrollToSection(link.href)}
-                    onTouchEnd={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
                     className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200"
                   >
                     {link.label}
