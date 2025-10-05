@@ -1,5 +1,15 @@
 export const PROJECTS = [
   {
+    title: "Dine With Foody – Multi-Role Restaurant Management System",
+    duration: "Aug 2024 - Now",
+    image: "/dine-with-foody.png",
+    description:
+      "Multi-role restaurant management system with four roles. Built with Next.js and MongoDB.",
+    github: "https://github.com/Abdullahfalak007/dinewithfoody",
+    demo: "https://dinewithfoody.vercel.app/",
+    demoLabel: "Live Demo",
+  },
+  {
     title: "TeChat – Chatting Android App",
     duration: "Mar 2024",
     image: "/TeChat.png",

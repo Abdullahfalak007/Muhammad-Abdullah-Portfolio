@@ -99,6 +99,16 @@ export const CERTIFICATES = [
 
 export const CERTIFICATE_IMAGES = [
   {
+    image: bootcampCert,
+    title: "Bootcamp Completion Certificate",
+    description: "Techloset Solutions - Full Stack Development Bootcamp",
+  },
+  {
+    image: reactNativeCert,
+    title: "React Native Certificate",
+    description: "NAVTTC - React Native Development Certification",
+  },
+  {
     image: mobileCert,
     title: "Mobile App Development Certificate",
     description: "E-rozgar Training Program - Android & iOS Development",
@@ -107,15 +117,5 @@ export const CERTIFICATE_IMAGES = [
     image: webMobileCert,
     title: "Web and Mobile App Development Certificate",
     description: "Saylani Mass IT Training - MERN Stack Development",
-  },
-  {
-    image: reactNativeCert,
-    title: "React Native Certificate",
-    description: "NAVTTC - React Native Development Certification",
-  },
-  {
-    image: bootcampCert,
-    title: "Bootcamp Completion Certificate",
-    description: "Techloset Solutions - Full Stack Development Bootcamp",
   },
 ];
