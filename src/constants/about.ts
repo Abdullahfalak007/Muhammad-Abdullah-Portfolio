@@ -55,9 +55,4 @@ export const ABOUT_CARDS = [
   },
 ];
 
-export const ABOUT_DESCRIPTION = `Enthusiastic and detail-oriented Full Stack Developer and Software Engineer with hands-on experience in
-building scalable and performant web and mobile applications. Expertise in working with the MERN stack, API
-integration, and developing AI-driven solutions. Passionate about delivering high-quality software that
-meets business goals, while leveraging modern technologies like PostgreSQL, Next.js, Node.js, Express.js,
-MongoDB, and FastAPI. Committed to continuous learning and contributing to impactful, growth-oriented
-projects.`;
+export const ABOUT_DESCRIPTION = `Passionate Full Stack Developer with MERN stack expertise and hands-on experience building scalable web/mobile apps and AI-powered solutions. Skilled in video streaming (Agora), payment integration (Stripe), JWT & OAuth authentication, Google login, webhooks, and AI assistants/chatbots. Proficient in developing dynamic dashboards using D3.js, and integrating voice AI (ElevenLabs) for interactive applications. Committed to delivering high-quality, business-aligned software and continuous growth.`;

@@ -17,7 +17,7 @@ export const EXPERIENCES = [
     company: "StrategistsHub",
     duration: "Jul 2025 - Present",
     description:
-      "Joined StrategistsHub as an Associate Software Engineer working with the MERN stack, focused on building scalable web apps with PostgreSQL, Next.js, Node.js, Express.js, and MongoDB.",
+      "Developing scalable web applications using Next.js, Node.js, PostgreSQL, and MongoDB. Implementing data visualizations (D3.js), video conferencing (Agora), Stripe payment integrations, and AI voice/chat assistants (ElevenLabs) for enterprise solutions.",
     current: true,
     logo: strategistsHubLogo,
     website: "https://strategisthub.com/",
@@ -25,9 +25,9 @@ export const EXPERIENCES = [
   {
     title: "Junior Developer",
     company: "Cybergen, Faisalabad",
-    duration: "June 2024 - Sep 2024",
+    duration: "June 2024 - Sep 2025",
     description:
-      "Developed AI-integrated software for a US-based company, focusing on scalable front-end and back-end solutions. Built and consumed RESTful APIs for data-driven dashboards and dynamic web pages.",
+      "Built AI-integrated web platforms with RESTful APIs and data-driven dashboards for a US-based company.",
     current: false,
     logo: cybergenLogo,
     website: "https://cybergen.com",
@@ -37,7 +37,7 @@ export const EXPERIENCES = [
     company: "TechloSet Solutions, Faisalabad",
     duration: "Feb 2024 - May 2024",
     description:
-      "Completed a 4-month coding bootcamp and built 4 full-stack apps using React, React Native, Next.js, Node.js, MongoDB & Firebase. Implemented authentication (JWT & OAuth) and state management with Redux Toolkit.",
+      "Completed a 4-month coding bootcamp and built multiple full-stack apps using React, React Native, Next.js, Node.js, MongoDB, and Firebase. Implemented JWT authentication, Google login, and webhooks for real-time features in chat and collaboration apps.",
     current: false,
     logo: techlosetLogo,
     website: "https://techloset.com",
@@ -47,7 +47,7 @@ export const EXPERIENCES = [
     company: "Fiverr | Upwork",
     duration: "Nov 2024 - Present",
     description:
-      "Building responsive web apps with React, Next.js, and Tailwind CSS. Integrating REST APIs and authentication using Node.js, MongoDB, and FastAPI to deliver scalable solutions for clients.",
+      "Delivering responsive web solutions with React, Next.js, and Tailwind CSS for global clients along with REST APIs Integration, authentication modules, and FastAPI backends ensuring reliability and scalability.",
     current: true,
     logo: freelanceLogo,
     website: "https://www.upwork.com/freelancers/~01c0f8755d4b590d1a",
@@ -57,7 +57,7 @@ export const EXPERIENCES = [
     company: "AmazeWorks Private Limited",
     duration: "May 2022 - Aug 2022",
     description:
-      "Contributed to ERP development by customizing front-end components and integrating features with Python and XML. Integrated new modules, improving system scalability and UX consistency.",
+      "Contributed to ERP system enhancement through front-end customization and Python/XML module integration.",
     current: false,
     logo: amazeworksLogo,
     website: "https://pk.linkedin.com/company/amaze-works",
@@ -66,14 +66,14 @@ export const EXPERIENCES = [
 
 export const CERTIFICATES = [
   {
-    title: "Mobile App Development (E-rozgar Training Program)",
+    title: "Mobile App Development (E-rozgar)",
     duration: "Jan 2024 - Apr 2024",
     description:
       "Android & iOS development with hands‑on UI design and backend integration.",
   },
   {
-    title: "Web and Mobile App Development (Saylani Mass IT Training)",
-    duration: "Oct 2023 - Dec 2024",
+    title: "Web and Mobile App Development (SMIT)",
+    duration: "Dec 2023 - Dec 2024",
     description:
       "Web/mobile development course using the MERN stack to build responsive apps.",
   },
@@ -87,7 +87,7 @@ export const CERTIFICATES = [
     title: "IELTS Certification",
     duration: "Nov 2023 - Present",
     description:
-      "Successfully completed the IELTS exam on November 9, 2023, with an overall score of 7.0, corresponding to a CEFR Level of C1, showing proficiency in English language.",
+      "Scored 7.0 bands, corresponding to a CEFR Level of C1, showing proficiency in English language.",
   },
   {
     title: "Techloset Bootcamp Completion",

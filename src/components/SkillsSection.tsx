@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Code, Database, Server } from "lucide-react";
+import { CheckCircle, Code, Database, Server, Brain } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   AnimatedSection,
@@ -9,22 +9,32 @@ import {
 
 const SkillsSection = () => {
   const frontendSkills = [
-    { name: "HTML5", level: "Experienced" },
-    { name: "CSS3", level: "Experienced" },
-    { name: "JavaScript (ES6+)", level: "Experienced" },
     { name: "React.js", level: "Experienced" },
     { name: "Next.js", level: "Experienced" },
+    { name: "JavaScript (ES6+)", level: "Experienced" },
     { name: "TypeScript", level: "Experienced" },
+    { name: "HTML5", level: "Experienced" },
+    { name: "CSS3", level: "Experienced" },
+    { name: "Tailwind CSS", level: "Experienced" },
     { name: "Bootstrap", level: "Intermediate" },
-    { name: "Tailwind CSS", level: "Intermediate" },
+    { name: "Material UI", level: "Intermediate" },
+    { name: "Daisy UI", level: "Intermediate" },
+    { name: "Redux Toolkit", level: "Experienced" },
+    { name: "D3.js", level: "Intermediate" },
   ];
 
   const backendSkills = [
     { name: "Node.js", level: "Experienced" },
     { name: "Express.js", level: "Experienced" },
-    { name: "Python", level: "Intermediate" },
     { name: "FastAPI", level: "Intermediate" },
     { name: "REST API", level: "Experienced" },
+    { name: "JWT", level: "Experienced" },
+    { name: "OAuth", level: "Experienced" },
+    { name: "Webhooks", level: "Intermediate" },
+    { name: "Google Login", level: "Experienced" },
+    { name: "Stripe", level: "Intermediate" },
+    { name: "Agora", level: "Intermediate" },
+    { name: "Python", level: "Intermediate" },
     { name: "Git", level: "Experienced" },
   ];
 
@@ -32,6 +42,15 @@ const SkillsSection = () => {
     { name: "MongoDB", level: "Experienced" },
     { name: "PostgreSQL", level: "Experienced" },
     { name: "Firebase", level: "Experienced" },
+  ];
+
+  const aiToolsSkills = [
+    { name: "ElevenLabs (AI Voice)", level: "Intermediate" },
+    { name: "AI Assistants", level: "Intermediate" },
+    { name: "Chatbots", level: "Intermediate" },
+    { name: "GitHub", level: "Experienced" },
+    { name: "GitLab", level: "Intermediate" },
+    { name: "Bitbucket", level: "Intermediate" },
   ];
 
   const SkillCard = ({
@@ -139,15 +158,16 @@ const SkillsSection = () => {
             skills={backendSkills}
             icon={Server}
           />
-          <div className="md:col-span-2 flex justify-center">
-            <div className="w-full md:max-w-md">
-              <SkillCard
-                title="Databases"
-                skills={databaseSkills}
-                icon={Database}
-              />
-            </div>
-          </div>
+          <SkillCard
+            title="Databases"
+            skills={databaseSkills}
+            icon={Database}
+          />
+          <SkillCard
+            title="AI & Tools"
+            skills={aiToolsSkills}
+            icon={Brain}
+          />
         </div>
       </div>
     </section>
