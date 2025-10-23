@@ -1,3 +1,5 @@
+"use client";
+
 // src/components/CertificateCarousel.tsx
 
 import { useState } from "react";
@@ -9,7 +11,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface CertificateCarouselProps {
   certificates: {
-    image: string;
+    image: any;
     title: string;
     description: string;
   }[];
@@ -45,7 +47,11 @@ const CertificateCarousel = ({ certificates }: CertificateCarouselProps) => {
                   <DialogTrigger asChild>
                     <div className="relative group w-full h-full">
                       <img
-                        src={certificates[currentIndex].image}
+                        src={
+                          typeof certificates[currentIndex].image === "string"
+                            ? certificates[currentIndex].image
+                            : certificates[currentIndex].image.src
+                        }
                         alt={certificates[currentIndex].title}
                         className="w-full h-full object-fill rounded-lg shadow-card transition-transform duration-300 group-hover:scale-105"
                       />
@@ -57,7 +63,11 @@ const CertificateCarousel = ({ certificates }: CertificateCarouselProps) => {
                   <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-sm">
                     <div className="p-4">
                       <img
-                        src={certificates[currentIndex].image}
+                        src={
+                          typeof certificates[currentIndex].image === "string"
+                            ? certificates[currentIndex].image
+                            : certificates[currentIndex].image.src
+                        }
                         alt={certificates[currentIndex].title}
                         className="w-full h-auto object-contain rounded-lg"
                       />

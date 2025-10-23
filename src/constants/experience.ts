@@ -1,15 +1,15 @@
 // Experience data with company logos and websites
-import strategistsHubLogo from "/assets/strategistshub-logo.jpg";
-import cybergenLogo from "/assets/cybergen-logo.jpg";
-import techlosetLogo from "/assets/techloset-logo.jpg";
-import freelanceLogo from "/assets/freelance-logo.jpg";
-import amazeworksLogo from "/assets/amazeworks-logo.jpg";
+import strategistsHubLogo from "../../public/assets/strategistshub-logo.jpg";
+import cybergenLogo from "../../public/assets/cybergen-logo.jpg";
+import techlosetLogo from "../../public/assets/techloset-logo.jpg";
+import freelanceLogo from "../../public/assets/freelance-logo.jpg";
+import amazeworksLogo from "../../public/assets/amazeworks-logo.jpg";
 
 // Certificate images
-import mobileCert from "/assets/mobile-dev-cert.jpg";
-import webMobileCert from "/assets/web-and-mobile-cert.jpg";
-import reactNativeCert from "/assets/react-native-cert.jpg";
-import bootcampCert from "/assets/bootcamp-cert.jpg";
+import mobileCert from "../../public/assets/mobile-dev-cert.jpg";
+import webMobileCert from "../../public/assets/web-and-mobile-cert.jpg";
+import reactNativeCert from "../../public/assets/react-native-cert.jpg";
+import bootcampCert from "../../public/assets/bootcamp-cert.jpg";
 
 export const EXPERIENCES = [
   {

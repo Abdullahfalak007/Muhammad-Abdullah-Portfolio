@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from "lucide-react";
@@ -12,22 +14,22 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY!);
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
   }, []);
 
   // Compute a human‑readable timestamp at mount
   const [currentDate] = useState(() => new Date().toLocaleString());
 
   useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY!);
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
 
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID!;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID!;
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
 
     // guard missing env
     if (!serviceID || !templateID) {

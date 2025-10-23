@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Building, ExternalLink } from "lucide-react";
@@ -51,7 +53,11 @@ const ExperienceSection = () => {
                         >
                           <div className="w-16 h-16 rounded-lg bg-background/50 p-2 shadow-card hover:shadow-glow transition-all duration-300 flex items-center justify-center overflow-hidden">
                             <img
-                              src={exp.logo}
+                              src={
+                                typeof exp.logo === "string"
+                                  ? exp.logo
+                                  : exp.logo.src
+                              }
                               alt={`${exp.company} logo`}
                               className="w-full h-full rounded-lg object-contain transition-transform duration-300 group-hover/logo:scale-110"
                             />

@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Code, Database, Server, Brain } from "lucide-react";
@@ -163,11 +165,7 @@ const SkillsSection = () => {
             skills={databaseSkills}
             icon={Database}
           />
-          <SkillCard
-            title="AI & Tools"
-            skills={aiToolsSkills}
-            icon={Brain}
-          />
+          <SkillCard title="AI & Tools" skills={aiToolsSkills} icon={Brain} />
         </div>
       </div>
     </section>

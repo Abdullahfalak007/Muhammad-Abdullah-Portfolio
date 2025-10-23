@@ -1,3 +1,5 @@
+"use client";
+
 const Footer = () => {
   const navLinks = [
     { href: "#about", label: "About" },
