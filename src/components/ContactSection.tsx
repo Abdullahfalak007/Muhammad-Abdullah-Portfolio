@@ -133,7 +133,7 @@ const ContactSection = () => {
             <Card className="bg-gradient-card border-0 shadow-elegant h-full">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 text-foreground">
-                  Let's Connect
+                  Let&apos;s Connect
                 </h3>
 
                 <div className="space-y-6">
