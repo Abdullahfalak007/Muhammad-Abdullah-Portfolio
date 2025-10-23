@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
+import Image from "next/image";
 import { PROJECTS } from "@/constants/projects";
 
 const ProjectsSection = () => {
@@ -26,9 +27,11 @@ const ProjectsSection = () => {
             >
               {/* Project Image */}
               <div className="aspect-square w-full h-64 overflow-hidden bg-muted flex items-center justify-center">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={400}
+                  height={256}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

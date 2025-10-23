@@ -13,6 +13,7 @@ import {
   Terminal,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   HERO_PROFILE_IMAGE,
   HERO_SOCIAL_LINKS,
@@ -57,10 +58,13 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
+                <Image
                   src={HERO_PROFILE_IMAGE}
                   alt="Muhammad Abdullah profile picture"
+                  width={320}
+                  height={320}
                   className="w-full h-full object-cover"
+                  priority
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-hero opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </motion.div>

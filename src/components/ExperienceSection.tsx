@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Building, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { EXPERIENCES } from "@/constants/experience";
 
 const ExperienceSection = () => {
@@ -52,13 +53,15 @@ const ExperienceSection = () => {
                           className="relative group/logo"
                         >
                           <div className="w-16 h-16 rounded-lg bg-background/50 p-2 shadow-card hover:shadow-glow transition-all duration-300 flex items-center justify-center overflow-hidden">
-                            <img
+                            <Image
                               src={
                                 typeof exp.logo === "string"
                                   ? exp.logo
-                                  : exp.logo.src
+                                  : exp.logo
                               }
                               alt={`${exp.company} logo`}
+                              width={64}
+                              height={64}
                               className="w-full h-full rounded-lg object-contain transition-transform duration-300 group-hover/logo:scale-110"
                             />
                           </div>

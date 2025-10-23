@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface CertificateCarouselProps {
@@ -45,14 +46,16 @@ const CertificateCarousel = ({ certificates }: CertificateCarouselProps) => {
               <div className="h-full flex items-center justify-center">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className="relative group w-full h-full">
-                      <img
+                    <div className="relative group w-full h-full cursor-pointer">
+                      <Image
                         src={
                           typeof certificates[currentIndex].image === "string"
                             ? certificates[currentIndex].image
-                            : certificates[currentIndex].image.src
+                            : certificates[currentIndex].image
                         }
                         alt={certificates[currentIndex].title}
+                        width={800}
+                        height={500}
                         className="w-full h-full object-fill rounded-lg shadow-card transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center">
@@ -62,13 +65,15 @@ const CertificateCarousel = ({ certificates }: CertificateCarouselProps) => {
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-sm">
                     <div className="p-4">
-                      <img
+                      <Image
                         src={
                           typeof certificates[currentIndex].image === "string"
                             ? certificates[currentIndex].image
-                            : certificates[currentIndex].image.src
+                            : certificates[currentIndex].image
                         }
                         alt={certificates[currentIndex].title}
+                        width={1200}
+                        height={800}
                         className="w-full h-auto object-contain rounded-lg"
                       />
                       <div className="mt-4 text-center">
