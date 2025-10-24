@@ -3,11 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [],
-    unoptimized: true,
   },
-  output: 'export',
-  distDir: 'dist',
-  trailingSlash: true,
+  // Removed 'output: export' to enable API routes on Vercel
+  // Removed 'distDir' and 'unoptimized' for standard Vercel deployment
 };
 
 module.exports = nextConfig;
