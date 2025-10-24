@@ -52,6 +52,9 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
   const synthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const streamingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Initialize Speech Recognition
   useEffect(() => {
@@ -91,6 +94,15 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
       }
       if (synthesisRef.current) {
         window.speechSynthesis.cancel();
+      }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      if (streamingTimeoutRef.current) {
+        clearTimeout(streamingTimeoutRef.current);
       }
     };
   }, [isVoiceMode]);
@@ -155,11 +167,16 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
       if (data.audio && !data.fallback) {
         // Play ElevenLabs audio
         const audio = new Audio(`data:audio/mpeg;base64,${data.audio}`);
+        audioRef.current = audio;
         setIsSpeaking(true);
-        audio.onended = () => setIsSpeaking(false);
+        audio.onended = () => {
+          setIsSpeaking(false);
+          audioRef.current = null;
+        };
         audio.onerror = () => {
           console.log("Audio playback error, falling back to Web Speech");
           setIsSpeaking(false);
+          audioRef.current = null;
           fallbackToWebSpeech(text);
         };
         await audio.play();
@@ -200,7 +217,16 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
   };
 
   const stopSpeaking = () => {
+    // Stop Web Speech API
     window.speechSynthesis.cancel();
+
+    // Stop any HTML5 audio
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      audioRef.current = null;
+    }
+
     setIsSpeaking(false);
   };
 
@@ -211,11 +237,17 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
 
     const words = text.split(" ");
     for (let i = 0; i < words.length; i++) {
+      // Check if we should stop streaming
+      if (!isStreaming && streamingTimeoutRef.current === null) break;
+
       setStreamingMessage((prev) => prev + (i > 0 ? " " : "") + words[i]);
-      await new Promise((resolve) => setTimeout(resolve, 50)); // Adjust speed here
+      await new Promise((resolve) => {
+        streamingTimeoutRef.current = setTimeout(resolve, 30); // Faster streaming (was 50ms)
+      });
     }
 
     setIsStreaming(false);
+    streamingTimeoutRef.current = null;
   };
 
   const handleSendMessage = async (messageText?: string) => {
@@ -232,6 +264,9 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
     setInputMessage("");
     setIsLoading(true);
 
+    // Create new abort controller for this request
+    abortControllerRef.current = new AbortController();
+
     try {
       // Try ElevenLabs Conversational AI first
       const elevenlabsResponse = await fetch("/api/elevenlabs-conversation", {
@@ -244,6 +279,7 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
             content: m.content,
           })),
         }),
+        signal: abortControllerRef.current.signal,
       });
 
       const elevenlabsData = await elevenlabsResponse.json();
@@ -264,6 +300,7 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
               content: m.content,
             })),
           }),
+          signal: abortControllerRef.current.signal,
         });
 
         const groqData = await groqResponse.json();
@@ -291,15 +328,20 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
       setStreamingMessage("");
 
       // Speak response in voice mode (use ElevenLabs audio if available)
-      if (isVoiceMode) {
+      if (isVoiceMode && !isMuted) {
         if (audioUrl) {
           // Play ElevenLabs audio directly
           const audio = new Audio(audioUrl);
+          audioRef.current = audio;
           setIsSpeaking(true);
-          audio.onended = () => setIsSpeaking(false);
-          audio.onerror = () => {
+          audio.onended = () => {
             setIsSpeaking(false);
-            // Fallback to TTS if audio fails
+            audioRef.current = null;
+          };
+          audio.onerror = () => {
+            console.log("Audio playback error, falling back to TTS");
+            setIsSpeaking(false);
+            audioRef.current = null;
             speakText(responseMessage);
           };
           await audio.play();
@@ -309,6 +351,11 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
         }
       }
     } catch (error: any) {
+      // Don't show error if request was aborted
+      if (error.name === "AbortError") {
+        console.log("Request aborted");
+        return;
+      }
       const errorMessage: Message = {
         role: "assistant",
         content:
@@ -322,13 +369,29 @@ export default function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
   };
 
   const endCall = () => {
+    // Abort any ongoing API requests
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
+
     // Stop all voice activities
     stopListening();
     stopSpeaking();
+
+    // Clear streaming timeout
+    if (streamingTimeoutRef.current) {
+      clearTimeout(streamingTimeoutRef.current);
+      streamingTimeoutRef.current = null;
+    }
+
+    // Reset all states
     setIsLoading(false);
     setInputMessage("");
     setStreamingMessage("");
     setIsStreaming(false);
+    setIsSpeaking(false);
+    setIsListening(false);
   };
 
   const toggleVoiceMode = () => {
