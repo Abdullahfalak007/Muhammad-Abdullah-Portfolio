@@ -7,6 +7,7 @@ import CertificationsSection from "@/components/CertificationsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import AIAssistantButton from "@/components/AIAssistantButton";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <ProjectsSection />
       <ContactSection />
       <Footer />
+      <AIAssistantButton />
     </div>
   );
 }
