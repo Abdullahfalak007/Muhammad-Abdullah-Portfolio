@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import Groq from "groq-sdk";
 import { KNOWLEDGE_BASE, SYSTEM_PROMPT } from "@/constants/knowledgeBase";
 
-// Initialize Groq client
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+// Lazy initialize Groq client
+function getGroqClient() {
+  const Groq = require("groq-sdk").default;
+  return new Groq({
+    apiKey: process.env.GROQ_API_KEY,
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -32,6 +34,7 @@ export async function POST(request: NextRequest) {
     ];
 
     // Call Groq API with Llama model
+    const groq = getGroqClient();
     const completion = await groq.chat.completions.create({
       messages: messages as any,
       model: "llama-3.3-70b-versatile", // Updated to current model
